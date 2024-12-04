@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensordata</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.on('sensor_update', function(data) {
+                // Använd nyckeln 'antal_lyssnare' här som den kommer att skickas från servern
+                document.getElementById('lyssnare').innerText = data.antal_lyssnare;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Sensordata</h1>
+    <p>Antal lyssnare: <span id="lyssnare">Laddar...</span></p>
+</body>
+</html>

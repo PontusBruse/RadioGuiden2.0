@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Sveriges Radio Kanaler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Välj en radiokanal</h1>
+    <ul>
+        {% for channel in channels %}
+            <li>
+                <a href="{{ url_for('channel_detail', channel_id=channel.id) }}">{{ channel.name }}</a>
+                <!-- länken för liveaudio -->
+                <a href="{{ channel.liveaudio_url }}" target="_blank">Lyssna Live</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

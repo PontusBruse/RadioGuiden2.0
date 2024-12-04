@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ channel.name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            var socket = io.connect('http://' + document.domain + ':' + location.port);
+            socket.on('sensor_update', function(data) {
+                document.getElementById('lyssnare').innerText = data.antal_lyssnare;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>{{ channel.name }}</h1>
+    <a href="{{ channel.siteurl }}" target="_blank">Besök kanalens webbplats</a>
+    <a href="{{ channel.liveaudio_url }}" target="_blank">Lyssna Live</a>
+
+    <!-- Antal lyssnare -->
+    <div>
+        <h2>Antal lyssnare: <span id="lyssnare">{{ listeners }}</span></h2>
+    </div>
+
+    <h2>Programtablå</h2>
+    <ul>
+        {% for program in schedule %}
+            <li>{{ program['starttimeutc'] | format_datetime }} - {{ program['title'] }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if not all_programs %}
+        <a href="{{ url_for('channel_all_programs', channel_id=channel.id) }}">Se alla program</a>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,63 @@
+/* Grundläggande Reset */
+body, h1, h2, ul, li, p, a {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    text-decoration: none;
+}
+
+body {
+    background-color: #f4f4f4;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Container för innehållet */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Huvudrubrik Stil */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Kanallista Stil */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+li a {
+    color: #333;
+    display: block;
+}
+
+li a:hover {
+    background-color: #f8f8f8;
+}
+
+/* Programtablå Stil */
+h2 {
+    color: #333;
+    margin-top: 20px;
+}
+
+/* Fotnot Stil */
+footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+}
